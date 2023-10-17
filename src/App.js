@@ -1,25 +1,21 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, Route, Routes,
+  createBrowserRouter, createRoutesFromElements, Route, RouterProvider,
 } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
+import Dragons from './components/Dragons/Dragons';
 
-import RocketList from './components/rocket/RocketList';
-import './App.css';
-
-const App = () => (
-  <Router>
-    <>
-      <Navbar />
-      <div>
-        <div>
-          <Routes>
-            <Route path="/" element={<RocketList />} />
-          </Routes>
-        </div>
-      </div>
-    </>
-  </Router>
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<Navbar />}>
+      <Route path="/" element={<Dragons />} />
+      <Route path="/missions" element={<Missions />} />
+      <Route path="/Dragons" element={<Dragons />} />
+      <Route path="/my-profile" element={<Profile />} />
+    </Route>,
+  ),
 );
-
+function App() {
+  return <RouterProvider router={router} />;
+}
 export default App;
