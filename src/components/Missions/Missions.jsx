@@ -36,7 +36,9 @@ function MissionRow({ mission, onJoin, onCancel }) {
 
 function Missions({ missions, onJoin, onCancel }) {
   return (
-    
+    <div className="mission-page">
+      
+    </div>
   );
 }
 
