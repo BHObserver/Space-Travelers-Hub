@@ -59,7 +59,12 @@ function Missions({ missions, onJoin, onCancel }) {
             </tr>
           ) : (
             missions.map((mission) => (
-              <MissionRow key={mission.mission_id} mission={mission} onJoin={onJoin} onCancel={onCancel} />
+              <MissionRow
+                key={mission.mission_id}
+                mission={mission}
+                onJoin={onJoin}
+                onCancel={onCancel}
+              />
             ))
           )}
         </tbody>
