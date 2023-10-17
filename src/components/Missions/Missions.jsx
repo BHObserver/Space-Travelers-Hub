@@ -33,3 +33,11 @@ function MissionRow({ mission, onJoin, onCancel }) {
     </tr>
   );
 }
+
+function Missions({ missions, onJoin, onCancel }) {
+  return (
+    
+  );
+}
+
+export default Missions;
