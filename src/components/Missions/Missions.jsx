@@ -7,7 +7,11 @@ function MissionRow({ mission, onJoin, onCancel }) {
       <td className="mission-name">
         <h3>{mission.mission_name}</h3>
       </td>
-      
+      <td>
+        <p className="description">{mission.description}</p>
+      </td>
+      <td>
+        
     </tr>
   );
 }
