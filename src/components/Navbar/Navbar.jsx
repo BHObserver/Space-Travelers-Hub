@@ -18,6 +18,9 @@ const Navbar = () => (
           <NavLink className="nav-link" activeClassName="active-link" to="/missions">Missions</NavLink>
         </li>
         <li className="nav-item">
+          <NavLink className="nav-link" activeClassName="active-link" to="/dragons">Dragons</NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink className="nav-link" activeClassName="active-link" to="/my-profile">My Profile</NavLink>
         </li>
       </ul>
