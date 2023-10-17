@@ -52,7 +52,17 @@ function Missions({ missions, onJoin, onCancel }) {
             <th width="12.5%"></th>
           </tr>
         </thead>
-        
+        <tbody>
+          {missions.length === 0 ? (
+            <tr>
+              <td colSpan="4">Loading missions...</td>
+            </tr>
+          ) : (
+            missions.map((mission) => (
+              <MissionRow key={mission.mission_id} mission={mission} onJoin={onJoin} onCancel={onCancel} />
+            ))
+          )}
+        </tbody>
       </table>
     </div>
   );
