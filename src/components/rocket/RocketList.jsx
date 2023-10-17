@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import Rocket from './Rocket';
