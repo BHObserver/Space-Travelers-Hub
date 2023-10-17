@@ -9,12 +9,8 @@ const initialState = {
 };
 
 export const fetchMissionsAsync = createAsyncThunk('missions/fetchMissions', async () => {
-  try {
-    const response = await axios.get(API_URL);
-    return response.data;
-  } catch (error) {
-    throw error; // You can handle errors in the component that dispatches the action.
-  }
+  const response = await axios.get(API_URL);
+  return response.data;
 });
 
 const missionsSlice = createSlice({
