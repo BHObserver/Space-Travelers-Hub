@@ -19,7 +19,17 @@ function MissionRow({ mission, onJoin, onCancel }) {
           )}
         </div>
       </td>
-      
+      <td className="mission-btn">
+        {!mission.reserved ? (
+          <button type="button" className="join-mission" onClick={() => onJoin(mission.mission_id)}>
+            Join Mission
+          </button>
+        ) : (
+          <button type="button" className="leave-mission" onClick={() => onCancel(mission.mission_id)}>
+            Leave Mission
+          </button>
+        )}
+      </td>
     </tr>
   );
 }
