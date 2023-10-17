@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMissionsAsync, cancelMission, joinMission } from '../../redux/missions/missionsSlice';
 import './missions.css';
-import { cancelMission, joinMission } from '../../redux/missions/missionsSlice';
 
-function MissionRow({ mission, onJoin, onCancel }) {
+function MissionRow({ mission }) {
+  const isActiveMember = mission.reserved;
+  const buttonText = isActiveMember ? 'Leave Mission' : 'Join Mission';
+  const statusText = isActiveMember ? 'Active member' : 'NOT a member';
+
+  const dispatch = useDispatch(); // Add useDispatch here
+
+  const handleMissionAction = () => {
+    if (isActiveMember) {
+      dispatch(cancelMission(mission.mission_id));
+    } else {
+      dispatch(joinMission(mission.mission_id));
+    }
+    console.log(isActiveMember); // Move the console.log here
+  };
+
   return (
     <tr key={mission.mission_id}>
       <td className="mission-name-cell">
@@ -13,29 +29,34 @@ function MissionRow({ mission, onJoin, onCancel }) {
       </td>
       <td className="mission-status-cell">
         <div className="mission-status">
-          {mission.reserved ? (
-            <p className="active-member-status">Active member</p>
-          ) : (
-            <p className="not-member-status">NOT a member</p>
-          )}
+          <p className={isActiveMember ? 'active-member-status' : 'not-member-status'}>
+            {statusText}
+          </p>
         </div>
       </td>
       <td className="mission-action-cell">
-        {!mission.reserved ? (
-          <button type="button" className="join-mission-button" onClick={() => onJoin(mission.mission_id)}>
-            Join Mission
-          </button>
-        ) : (
-          <button type="button" className="leave-mission-button" onClick={() => onCancel(mission.mission_id)}>
-            Leave Mission
-          </button>
-        )}
+        <button
+          type="button"
+          className={isActiveMember ? 'leave-mission-button' : 'join-mission-button'}
+          onClick={handleMissionAction} // Use the handleMissionAction function
+        >
+          {buttonText}
+        </button>
       </td>
     </tr>
   );
 }
 
-function Missions({ missions, dispatch }) {
+function Missions() {
+  const missions = useSelector((state) => state.missions.missionData);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!missions.length) {
+      dispatch(fetchMissionsAsync());
+    }
+  }, [dispatch, missions.length]);
+
   return (
     <div className="mission-page">
       <table className="mission-table">
@@ -62,8 +83,6 @@ function Missions({ missions, dispatch }) {
               <MissionRow
                 key={mission.mission_id}
                 mission={mission}
-                onJoin={() => dispatch(joinMission(mission.mission_id))}
-                onCancel={() => dispatch(cancelMission(mission.mission_id))}
               />
             ))
           )}
