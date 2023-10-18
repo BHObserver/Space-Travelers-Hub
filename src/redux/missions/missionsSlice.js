@@ -5,7 +5,6 @@ const API_URL = 'https://api.spacexdata.com/v3/missions';
 
 const initialState = {
   missionData: [],
-  selectedMissions: [],
 };
 
 export const fetchMissionsAsync = createAsyncThunk('missions/fetchMissions', async () => {
@@ -19,23 +18,31 @@ const missionsSlice = createSlice({
   reducers: {
     joinMission: (state, action) => {
       const missionId = action.payload;
-      if (!state.selectedMissions.includes(missionId)) {
-        state.selectedMissions.push(missionId);
-      }
+      state.missionData = state.missionData.map((mission) => {
+        if (mission.mission_id === missionId) {
+          return { ...mission, reserved: true };
+        }
+        return mission;
+      });
     },
     cancelMission: (state, action) => {
       const missionId = action.payload;
-      state.selectedMissions = state.selectedMissions.filter((id) => id !== missionId);
+      state.missionData = state.missionData.map((mission) => {
+        if (mission.mission_id === missionId) {
+          return { ...mission, reserved: false };
+        }
+        return mission;
+      });
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchMissionsAsync.fulfilled, (state, action) => {
-      const missionData = action.payload.map((mission) => ({
+      state.missionData = action.payload.map((mission) => ({
         mission_id: mission.mission_id,
         mission_name: mission.mission_name,
         description: mission.description,
+        reserved: false, // Initialize reserved property
       }));
-      state.missionData = missionData;
     });
   },
 });

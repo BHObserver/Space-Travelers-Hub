@@ -95,4 +95,5 @@ tbody tr td {
   box-sizing: border-box; 
   font-family: "Montserrat", sans-serif;
   color: #212529;
+  outline: none;
 }
