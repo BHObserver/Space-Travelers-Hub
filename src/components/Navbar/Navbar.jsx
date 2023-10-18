@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import logo from './planet.png'; // Assuming the image file is in the correct location.
+import logo from './planet.png';
 import './navbar.css';
 
 const Navbar = () => (
