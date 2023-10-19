@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   createBrowserRouter, createRoutesFromElements, Route, RouterProvider,
 } from 'react-router-dom';
@@ -8,9 +8,8 @@ import Dragons from './components/Dragons/Dragons';
 import MyProfiles from './components/Profile/Profiles';
 import RocketList from './components/rocket/RocketList';
 import MissionsContainer from './components/Missions/MissionsContainer';
-import { DragonFetch } from './components/redux/Dragon/dragonSlics';
+import { DragonFetch } from './redux/Dragon/dragonSlice';
 import './App.css';
-
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,10 +23,10 @@ const router = createBrowserRouter(
 );
 
 function App() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(DragonFetch());
-  }, []);
+  }, [dispatch]);
   return <RouterProvider router={router} />;
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './dragon.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { reserveDragon } from '../redux/Dragon/dragonSlics';
+import { reserveDragon } from '../../redux/Dragon/dragonSlice';
 
 export default function Dragons() {
   const dragons = useSelector((state) => state.dragon.dragons);
