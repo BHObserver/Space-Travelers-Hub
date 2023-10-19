@@ -1,23 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './dragon.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { DragonFetch, reserveDragon } from '../redux/Dragon/dragonSlics';
+import { reserveDragon } from '../redux/Dragon/dragonSlics';
 
 export default function Dragons() {
-  const dispatch = useDispatch();
-  //   const [buttontext, setButtontext] = useState('Reserve Dragon');
   const dragons = useSelector((state) => state.dragon.dragons);
+  const dispatch = useDispatch();
   const handleClick = (id) => {
     dispatch(reserveDragon(id));
-    // setButtontext(!buttontext);
   };
 
-  useEffect(() => {
-    dispatch(DragonFetch());
-  }, []);
-
   return (
-    <div className="main-dragon">
+    <div className="main-dragon" data-testid="main-dragon">
       {dragons.map((dragon, index) => (
         <div key={dragon.name} className="singledragon">
           <img src={dragon.flickr_images[0]} alt={`Dragon ${index + 1}`} className="dragon-image" />
