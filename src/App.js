@@ -8,7 +8,7 @@ import Dragons from './components/Dragons/Dragons';
 import MyProfiles from './components/Profile/Profiles';
 import RocketList from './components/rocket/RocketList';
 import MissionsContainer from './components/Missions/MissionsContainer';
-import { DragonFetch } from './components/redux/Dragon/dragonSlics';
+import { DragonFetch } from './redux/Dragon/dragonSlice';
 import './App.css';
 
 const router = createBrowserRouter(
@@ -26,7 +26,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(DragonFetch());
-  }, []);
+  }, [dispatch]);
   return <RouterProvider router={router} />;
 }
 
