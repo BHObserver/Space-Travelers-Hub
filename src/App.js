@@ -2,6 +2,7 @@ import React from 'react';
 import {
   createBrowserRouter, createRoutesFromElements, Route, RouterProvider,
 } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Navbar from './components/Navbar/Navbar';
 import Dragons from './components/Dragons/Dragons';
 import MyProfiles from './components/Profile/Profiles';
