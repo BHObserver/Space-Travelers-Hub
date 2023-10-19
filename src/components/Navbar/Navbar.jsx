@@ -13,7 +13,7 @@ const Navbar = () => (
         </div>
         <ul className="nav-menu">
           <li className="nav-item">
-            <NavLink className="nav-link" activeclassname="active-link" to="/">Rockets</NavLink>
+            <NavLink className="nav-link" activeclassname="active-link" to="/RocketList">Rockets</NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" activeclassname="active-link" to="/missions">Missions</NavLink>
