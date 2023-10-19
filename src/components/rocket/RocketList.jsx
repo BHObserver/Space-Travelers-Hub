@@ -1,23 +1,30 @@
-/* eslint-disable react/jsx-key */
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
+import { getRockets } from '../../redux/rockets/rocketsSlice';
+
 import Rocket from './Rocket';
-import { getRockets } from '../../redux/rockets/rockets';
 
 const RocketList = () => {
-  const rockets = useSelector((state) => state.rockets);
+  const { rockets } = useSelector((store) => store.rockets);
+  const { isLoading } = useSelector((store) => store.rockets);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRockets());
   }, [dispatch]);
+
+  if (isLoading) return <div className="loading-message">Rocket data loading...</div>;
+
   return (
     <div>
-      {rockets.map((rockets) => (
+      {rockets.map((rocket) => (
         <Rocket
-          id={rockets.id}
-          name={rockets.name}
-          description={rockets.description}
-          image={rockets.flickr_images}
+          key={rocket.rocketId}
+          id={rocket.rocketId}
+          name={rocket.rocketName}
+          description={rocket.description}
+          image={rocket.flickrImages}
+          reserved={rocket.reserved}
         />
       ))}
     </div>
