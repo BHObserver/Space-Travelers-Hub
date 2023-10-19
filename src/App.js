@@ -1,15 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar'; // Import your Navbar component
+import {
+  createBrowserRouter, createRoutesFromElements, Route, RouterProvider,
+} from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import Dragons from './components/Dragons/Dragons';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<Navbar />}>
+      <Route path="/" element={<Dragons />} />
+      <Route path="/missions" element={<Dragons />} />
+      <Route path="/Dragons" element={<Dragons />} />
+      <Route path="/my-profile" element={<Dragons />} />
+    </Route>,
+  ),
+);
 
 function App() {
-  return (
-    <Router>
-      <>
-        <Navbar />
-      </>
-    </Router>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
