@@ -2,11 +2,10 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import thunk from 'redux-thunk'; // Import redux-thunk
+import thunk from 'redux-thunk';
 import RocketList from '../rocket/RocketList';
 
-const mockStore = configureStore([thunk]); // Add thunk middleware to the store
+const mockStore = configureStore([thunk]);
 
 test('it renders the RocketList component', () => {
   const store = mockStore({ rockets: { rockets: [], isLoading: false } });
