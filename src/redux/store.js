@@ -1,7 +1,9 @@
 // store.js
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import thunk from 'redux-thunk';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import promise from 'redux-promise-middleware';
 import rocketReducer from './rockets/rocketsSlice';
 import missionsReducer from './missions/missionsSlice';
