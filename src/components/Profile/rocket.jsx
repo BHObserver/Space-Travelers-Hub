@@ -19,9 +19,7 @@ const MyProfileRockets = () => {
         <tbody className="table-body">
           {reservedrockets.map((rocket) => (
             <tr className="mission-list" key={rocket.rocketId}>
-              <td>
-                {rocket.rocketId}
-              </td>
+              <td>{rocket.rocketId}</td>
             </tr>
           ))}
         </tbody>

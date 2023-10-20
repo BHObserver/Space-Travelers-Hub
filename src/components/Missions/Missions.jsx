@@ -37,10 +37,7 @@ function Missions() {
             </tr>
           ) : (
             missions.map((mission) => (
-              <MissionRow
-                key={mission.mission_id}
-                mission={mission}
-              />
+              <MissionRow key={mission.mission_id} mission={mission} />
             ))
           )}
         </tbody>

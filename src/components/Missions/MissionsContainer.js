@@ -5,7 +5,9 @@ import Missions from './Missions';
 
 function MissionsContainer() {
   const missions = useSelector((state) => state.missions.missionData);
-  const selectedMissions = useSelector((state) => state.missions.selectedMissions);
+  const selectedMissions = useSelector(
+    (state) => state.missions.selectedMissions,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

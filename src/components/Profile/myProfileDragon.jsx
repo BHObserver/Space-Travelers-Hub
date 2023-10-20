@@ -19,9 +19,7 @@ const MyProfileDragon = () => {
         <tbody className="table-body">
           {reservedDragons.map((dragon) => (
             <tr className="mission-list" key={dragon.id}>
-              <td>
-                {dragon.name}
-              </td>
+              <td>{dragon.name}</td>
             </tr>
           ))}
         </tbody>
