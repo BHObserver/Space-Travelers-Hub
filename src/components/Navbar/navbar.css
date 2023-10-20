@@ -51,7 +51,7 @@
 }
 
 /* Add a border to all but the last list item */
-.nav-item:not(:last-child) {
+.nav-item:nth-child(3) {
   border-right: 2px solid #212529;
 }
 
