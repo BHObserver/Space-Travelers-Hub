@@ -117,12 +117,11 @@ To run the project, execute the following command:
 👤 **Burhan Uddin**
 
 - GitHub: [@githubhandle](https://github.com/BHObserver)
-- LinkedIn: [LinkedIn]()
+
 
 👤 **Sami Ullah Tufail**
 
 - GitHub: [@githubhandle](https://github.com/Sami-Ullah-Tufail)
-- LinkedIn: [LinkedIn]()
 
 👤 **Kenneth Adutwum**
 

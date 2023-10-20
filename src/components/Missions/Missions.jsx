@@ -1,18 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchMissionsAsync } from '../../redux/missions/missionsSlice';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import MissionRow from './MissionRow'; // Make sure to import your MissionRow component
 import './missions.css';
 
 function Missions() {
   const missions = useSelector((state) => state.missions.missionData);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!missions.length) {
-      dispatch(fetchMissionsAsync());
-    }
-  }, [dispatch, missions.length]);
 
   return (
     <div className="mission-page">
